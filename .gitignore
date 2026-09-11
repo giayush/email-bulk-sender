@@ -1,0 +1,34 @@
+# Root-level gitignore
+# ── Node ──────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── Environment / Secrets ─────────────────────────────
+.env
+*.env.local
+*.env.*.local
+
+# ── Build output ──────────────────────────────────────
+dist/
+dist-ssr/
+
+# ── Database (local SQLite file) ──────────────────────
+*.sqlite
+*.sqlite3
+
+# ── Logs ──────────────────────────────────────────────
+*.log
+logs/
+
+# ── OS / Editor ───────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

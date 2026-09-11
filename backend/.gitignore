@@ -1,0 +1,6 @@
+# Backend — Node/Express
+node_modules/
+.env
+*.log
+database.sqlite
+dist/
