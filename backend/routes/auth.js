@@ -65,7 +65,7 @@ router.post('/login', async (req, res) => {
       maxAge: 24 * 60 * 60 * 1000 // 1 day
     });
 
-    res.json({ success: true });
+    res.json({ success: true, token });
   } catch (error) {
     console.error('[Auth] Login error:', error);
     res.status(500).json({ error: 'Internal server error' });

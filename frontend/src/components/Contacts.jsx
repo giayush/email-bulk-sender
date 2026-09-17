@@ -12,7 +12,10 @@ function Contacts({ token }) {
   const fetchContacts = async () => {
     try {
       const response = await fetch(`${API_BASE}/api/contacts`, {
-        // Credentials are included automatically for same-origin via vite proxy
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+        credentials: 'include',
       });
       if (response.ok) {
         const data = await response.json();
@@ -41,8 +44,10 @@ function Contacts({ token }) {
       const response = await fetch(`${API_BASE}/api/contacts`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
+        credentials: 'include',
         body: JSON.stringify({ emails: newEmail.trim() })
       });
       
@@ -64,7 +69,11 @@ function Contacts({ token }) {
 
     try {
       const response = await fetch(`${API_BASE}/api/contacts/${encodeURIComponent(email)}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+        credentials: 'include',
       });
       
       if (!response.ok) {
@@ -111,8 +120,10 @@ function Contacts({ token }) {
         const response = await fetch(`${API_BASE}/api/contacts`, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
           },
+          credentials: 'include',
           body: JSON.stringify({ emails })
         });
 

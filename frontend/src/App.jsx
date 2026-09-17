@@ -5,14 +5,14 @@ import Contacts from './components/Contacts';
 import './App.css';
 
 function App() {
-  const [token, setToken] = useState(localStorage.getItem('isAuthenticated') === 'true');
+  const [token, setToken] = useState(localStorage.getItem('authToken') || null);
   const [view, setView] = useState('compose'); // 'compose' or 'contacts'
 
   useEffect(() => {
     if (token) {
-      localStorage.setItem('isAuthenticated', 'true');
+      localStorage.setItem('authToken', token);
     } else {
-      localStorage.removeItem('isAuthenticated');
+      localStorage.removeItem('authToken');
     }
   }, [token]);
 

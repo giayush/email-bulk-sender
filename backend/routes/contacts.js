@@ -6,7 +6,9 @@ const { getDb } = require('../database');
 // Middleware to protect route
 const authenticate = (req, res, next) => {
   let token;
-  if (req.headers.cookie) {
+  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer ')) {
+    token = req.headers.authorization.split(' ')[1];
+  } else if (req.headers.cookie) {
     const cookies = req.headers.cookie.split(';').reduce((res, c) => {
       const [key, val] = c.trim().split('=').map(decodeURIComponent);
       res[key] = val;

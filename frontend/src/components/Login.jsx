@@ -28,7 +28,7 @@ function Login({ setToken }) {
         throw new Error(data.error || 'Login failed');
       }
 
-      setToken(true);
+      setToken(data.token);
     } catch (err) {
       setError(err.message);
     } finally {

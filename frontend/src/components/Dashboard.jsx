@@ -19,7 +19,10 @@ function Dashboard({ token }) {
   const fetchContacts = async () => {
     try {
       const response = await fetch(`${API_BASE}/api/contacts`, {
-        // Credentials included automatically
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+        credentials: 'include',
       });
       if (response.ok) {
         const data = await response.json();
@@ -84,8 +87,10 @@ function Dashboard({ token }) {
         const response = await fetch(`${API_BASE}/api/contacts`, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
           },
+          credentials: 'include',
           body: JSON.stringify({ emails })
         });
 
@@ -96,7 +101,10 @@ function Dashboard({ token }) {
         
         // Fetch new contacts, then select them
         const fetchRes = await fetch(`${API_BASE}/api/contacts`, {
-          // Credentials included automatically
+          headers: {
+            'Authorization': `Bearer ${token}`
+          },
+          credentials: 'include',
         });
         if (fetchRes.ok) {
           const newData = await fetchRes.json();
@@ -173,7 +181,10 @@ function Dashboard({ token }) {
     try {
       const response = await fetch(`${API_BASE}/api/email/send`, {
         method: 'POST',
-        // Credentials included automatically
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+        credentials: 'include',
         body: formData,
       });
 
